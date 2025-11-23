@@ -24,7 +24,6 @@ React
 Git & GitHub
 
 Project Structure
-
 /app – Next.js pages and layouts
 
 /components – Reusable UI components (Navbar, Footer, etc.)
