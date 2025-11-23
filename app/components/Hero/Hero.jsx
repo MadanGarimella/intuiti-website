@@ -20,7 +20,7 @@ export default function Hero() {
       "
     >
       {/* LEFT QUOTE */}
-      <div className="absolute top-50 right-255 w-64 rotate-[-10deg] opacity-95 pointer-events-none">
+      {/* <div className="absolute top-50 right-255 w-64 rotate-[-10deg] opacity-95 pointer-events-none">
         <motion.div
         initial={{ opacity: 0, y: 0, scale: 0.1 }}
           animate={{ opacity: 1, y: 8, scale: 1 }}
@@ -29,10 +29,10 @@ export default function Hero() {
             <Image src={leftQuote} alt="Left Quote" className="w-full h-auto" />
         </motion.div>
         
-      </div>
+      </div> */}
 
       {/* RIGHT QUOTE */}
-      <div className="absolute top-100 left-260 w-64 rotate-[10deg] opacity-95 pointer-events-none">
+      {/* <div className="absolute top-100 left-260 w-64 rotate-[10deg] opacity-95 pointer-events-none">
         <motion.div
         initial={{ opacity: 0, y: 0, scale: 0.1 }}
           animate={{ opacity: 1, y: 8, scale: 1 }}
@@ -42,7 +42,7 @@ export default function Hero() {
         </motion.div>
         
         
-      </div>
+      </div> */}
 
       {/* ICON ARC (animated) */}
       <div className="relative flex items-center justify-center gap-16 mt-10 mb-6">
