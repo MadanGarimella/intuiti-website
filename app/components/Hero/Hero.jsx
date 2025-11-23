@@ -115,8 +115,8 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="
-          text-3xl md:text-5xl font-semibold 
-          leading-tight text-center max-w-3xl
+          text-xl md:text-5xl font-semibold 
+          leading-tight text-center max-w-2xl font-serif
         "
       >
         We Build Brands That <br />
@@ -130,10 +130,10 @@ export default function Hero() {
         transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
         className="
           mt-4 text-lg md:text-xl opacity-85
-          max-w-2xl mx-auto text-center leading-relaxed
+          max-w-2xl mx-auto text-center leading-relaxed font-serif
         "
       >
-        Performance-driven solutions designed to attract, convert, and retain
+        Performance-driven solutions designed to <br />Attract, Convert, and Retain
         customers.
       </motion.p>
 
@@ -149,7 +149,7 @@ export default function Hero() {
             px-10 py-4 bg-white text-black rounded-full
             text-lg font-medium shadow-[0_0_35px_rgba(255,255,255,0.25)]
             hover:shadow-[0_0_45px_rgba(255,255,255,0.35)]
-            transition-all duration-300
+            transition-all duration-300 font-serif
           "
         >
           Book a 30-Min Call
