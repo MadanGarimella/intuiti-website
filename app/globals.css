@@ -45,3 +45,50 @@ body {
 .btn-slide:hover::before {
   transform: translateX(0);
 }
+
+/* ============================= */
+/* 🔥 Rainbow Moving Border Glow */
+/* ============================= */
+
+.rainbow-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.rainbow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    lime,
+    cyan,
+    blue,
+    magenta,
+    red
+  );
+  background-size: 300% 300%;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+}
+
+.rainbow-border:hover::before {
+  opacity: 1;
+  animation: rainbowBorderSpin 2s linear infinite;
+}
+
+@keyframes rainbowBorderSpin {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+

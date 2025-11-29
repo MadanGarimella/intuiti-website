@@ -8,19 +8,31 @@ export default function Home() {
   return (
     <main className="relative w-full min-h-screen bg-black text-white overflow-hidden">
 
-      {/* GLOBAL Background Grid */}
-      <div className="absolute inset-0 opacity-[0.18] brightness-300 mix-blend-screen pointer-events-none">
+      {/* ⭐ FIXED Background Grid — NOT stretched, stays at top */}
+      <div className="absolute top-0 left-0 w-full pointer-events-none opacity-[0.18] brightness-500 mix-blend-screen">
 
         <Image
           src={bgGrid}
           alt="grid background"
-          fill
-          className="object-cover"
+
+          /* ❌ Removed fill (it was stretching the image) */
+          /* ❌ Removed object-cover (it distorted image) */
+
+          width={1920}
+          height={900}
+
+          className="
+            w-full 
+            h-auto 
+            object-top      /* stick to the top */
+            object-contain  /* keep original proportions */
+            select-none
+          "
           priority
         />
       </div>
 
-      {/* Content */}
+      {/* Page Content */}
       <div className="relative z-10">
         <Navbar />
         <Hero />
