@@ -48,7 +48,3 @@ Run:
 
 
 ---
-
-# 🎉 After this, your merge conflict is resolved and GitHub push will work.
-
-If you want a version styled differently, tell me — I can rewrite your README.md professionally.
