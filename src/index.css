@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.stroke-text {
+  -webkit-text-stroke: 2px #000;
+}
+
+.stroke-text-white {
+  -webkit-text-stroke: 2px #fff;
+}
