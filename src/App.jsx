@@ -9,6 +9,7 @@ import Portfolio from "./pages/Portfolio";
 import WhyUs from "./pages/WhyUs";
 import About from "./pages/About";
 import Contact from "./pages/ContactSection";
+import ScrollToTop from "./ScrollToTop";
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -29,6 +30,7 @@ function App() {
       <Navbar />
 
       <AnimatePresence mode="wait">
+        <ScrollToTop />
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
           <Route path="/portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />

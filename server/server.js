@@ -40,9 +40,7 @@ const Contact = mongoose.model("Contact", ContactSchema);
 /* ================= EMAIL CONFIG ================= */
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.zoho.in",
-  port: 587,
-  secure: false,
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
