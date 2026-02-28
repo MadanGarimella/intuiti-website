@@ -11,14 +11,8 @@ const app = express();
 
 /* ================= MIDDLEWARE ================= */
 
-// Allow local + production frontend
-// app.use(cors({
-//   origin: [
-//     "http://localhost:5173",
-//     process.env.FRONTEND_URL // set this in Render later
-//   ],
-//   credentials: true
-// }));
+// Allow all origins (temporary fix for dev + prod)
+app.use(cors());
 
 app.use(express.json());
 
@@ -46,7 +40,9 @@ const Contact = mongoose.model("Contact", ContactSchema);
 /* ================= EMAIL CONFIG ================= */
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.zoho.in",
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -76,10 +72,8 @@ app.post("/api/contact", async (req, res) => {
       return res.status(400).json({ message: "All required fields must be filled" });
     }
 
-    // Save to MongoDB
     await Contact.create({ name, email, company, message });
 
-    // Send email notification
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
