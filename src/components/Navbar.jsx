@@ -1,23 +1,23 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo2.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const baseLink =
-    "px-4 py-2 rounded-full transition-all duration-300";
+  const baseLink = "px-4 py-2 rounded-full transition-all duration-300";
+  const activeLink = "bg-white text-black shadow-md";
+  const inactiveLink = "text-white hover:bg-white/10";
 
-  const activeLink =
-    "bg-white text-black shadow-md";
-
-  const inactiveLink =
-    "text-white hover:bg-white/10";
+  const handleContactClick = () => {
+    navigate("/contact");
+    setIsOpen(false); // close mobile menu if open
+  };
 
   return (
     <div className="fixed w-full z-50 pt-6 font-serif">
-
       <div className="relative flex justify-center items-center px-6">
 
         {/* PILL NAVBAR */}
@@ -32,9 +32,8 @@ const Navbar = () => {
             />
           </Link>
 
-          {/* Desktop Links (UNCHANGED) */}
+          {/* Desktop Links */}
           <div className="hidden md:flex gap-2 text-sm items-center">
-
             <NavLink
               to="/why-us"
               className={({ isActive }) =>
@@ -61,24 +60,24 @@ const Navbar = () => {
             >
               Portfolio
             </NavLink>
-
           </div>
 
           {/* CTA */}
-          <button className="bg-orange-500 hover:bg-orange-600 text-black font-semibold px-6 py-2 rounded-full text-sm transition-all duration-300">
+          <button
+            onClick={handleContactClick}
+            className="bg-orange-500 hover:bg-orange-600 text-black font-semibold px-6 py-2 rounded-full text-sm transition-all duration-300"
+          >
             Book a Call
           </button>
-
         </nav>
 
-        {/* HAMBURGER (ONLY MOBILE) */}
+        {/* HAMBURGER (MOBILE ONLY) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden absolute right-6 bg-white p-2 rounded-full shadow-md"
         >
           {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-
       </div>
 
       {/* MOBILE MENU */}
@@ -121,6 +120,13 @@ const Navbar = () => {
             Portfolio
           </NavLink>
 
+          {/* Optional: Add Contact in Mobile Menu */}
+          <button
+            onClick={handleContactClick}
+            className="w-full bg-orange-500 hover:bg-orange-600 text-black font-semibold px-6 py-2 rounded-full text-sm transition-all duration-300"
+          >
+            Book a Call
+          </button>
         </div>
       )}
     </div>

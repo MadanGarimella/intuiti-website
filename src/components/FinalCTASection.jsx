@@ -3,6 +3,7 @@ import glowImage from "../assets/cta-glow.png";
 
 const FinalCTASection = () => {
   return (
+    
     <section className="relative pt-32 pb-20 overflow-hidden">
 
       {/* Background Image */}

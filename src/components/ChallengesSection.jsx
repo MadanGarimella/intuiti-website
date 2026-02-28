@@ -41,7 +41,7 @@ const challenges = [
 
 const ChallengesSection = () => {
   return (
-    <section className="bg-[#F8F8F8] mb-10 mt-14">
+    <section className="bg-[#F8F8F8] mb-10 mt-14 py-10">
       <div className="container mx-auto px-6">
 
         {/* Header */}

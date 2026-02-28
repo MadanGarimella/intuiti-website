@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import WhyUs from "./pages/WhyUs";
 import About from "./pages/About";
+import Contact from "./pages/ContactSection";
 
 const PageWrapper = ({ children }) => (
   <motion.div
@@ -33,6 +34,7 @@ function App() {
           <Route path="/portfolio" element={<PageWrapper><Portfolio /></PageWrapper>} />
           <Route path="/why-us" element={<PageWrapper><WhyUs /></PageWrapper>} />
           <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
+          <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         </Routes>
       </AnimatePresence>
 

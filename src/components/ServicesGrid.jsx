@@ -6,6 +6,7 @@ import {
   PenTool,
   TrendingUp,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -47,6 +48,7 @@ const services = [
 ];
 
 const ServicesGrid = () => {
+  const navigate = useNavigate();
   return (
     <section className="py-24 bg-[#F7F7F7]">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -114,7 +116,9 @@ const ServicesGrid = () => {
 
         {/* CTA */}
         <div className="text-center mt-20">
-          <button className="bg-primary text-black px-8 py-3 rounded-full font-semibold hover:scale-105 transition duration-300">
+          <button 
+          onClick={() => navigate("/contact")}
+          className="bg-primary text-black px-8 py-3 rounded-full font-semibold hover:scale-105 transition duration-300">
             Get Started
           </button>
         </div>
