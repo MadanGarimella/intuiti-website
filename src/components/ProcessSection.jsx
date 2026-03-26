@@ -1,186 +1,139 @@
-import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const steps = [
+const plans = [
   {
-    title: "Discovery & Audit",
-    items: [
-      "Market & competitor analysis",
-      "Positioning evaluation",
-      "Performance audit",
+    name: "Starter",
+    price: "₹15,000",
+    highlight: false,
+    features: [
+      "1 Platform (Meta or Google Ads)",
+      "Basic Funnel Setup",
+      "Ad Creative Support",
+      "Weekly Optimization",
+      "Performance Reporting",
     ],
   },
   {
-    title: "Strategy & Architecture",
-    items: [
-      "Funnel structure design",
-      "Channel selection",
-      "Conversion strategy",
+    name: "Growth",
+    price: "₹30,000",
+    highlight: true,
+    features: [
+      "Meta + Google Ads",
+      "Full Funnel Strategy",
+      "Advanced Creatives",
+      "A/B Testing",
+      "Conversion Optimization",
+      "Weekly Reports + Insights",
     ],
   },
   {
-    title: "Launch & Optimization",
-    items: [
-      "Campaign deployment",
-      "A/B testing",
-      "Performance tracking",
-    ],
-  },
-  {
-    title: "Scale & Automation",
-    items: [
-      "Budget scaling",
-      "Process automation",
-      "Growth reporting",
+    name: "Scale",
+    price: "₹60,000",
+    highlight: false,
+    features: [
+      "Multi-Platform Ads",
+      "Full Growth System",
+      "Creative Production",
+      "Advanced Scaling Strategy",
+      "Daily Optimization",
+      "Dedicated Support",
     ],
   },
 ];
 
-const ProcessSection = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [lineProgress, setLineProgress] = useState(0);
-  const containerRef = useRef(null);
-  const stepRefs = useRef([]);
-
-  /* ============================
-     INTERSECTION OBSERVER
-  ============================ */
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.dataset.index);
-            setActiveStep(index);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    stepRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  /* ============================
-     LINE DRAW ANIMATION
-  ============================ */
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return;
-
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const progress =
-        (windowHeight - rect.top) / (rect.height + windowHeight);
-
-      const clamped = Math.min(Math.max(progress, 0), 1);
-      setLineProgress(clamped);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const PricingSection = () => {
+  const navigate = useNavigate();
 
   return (
-    <section className="py-24 bg-[#F4F4F4]" ref={containerRef}>
-      <div className="container mx-auto px-6">
+    <section className="py-28 bg-[#0B0B0B] text-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-20">
 
-        {/* HEADER */}
-        <div className="mb-16">
-          <p className="text-primary uppercase tracking-[0.2em] text-xs mb-4">
-            Our Process
-          </p>
-
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight max-w-2xl">
-            A structured system engineered for growth.
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-6">
+            Pricing That Scales With You
           </h2>
+
+          <p className="text-gray-400 text-lg">
+            Choose a plan based on your growth stage. No hidden costs. Just
+            structured systems designed to drive results.
+          </p>
         </div>
 
-        {/* TIMELINE */}
-        <div className="relative">
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-8">
 
-          {/* Background Line */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gray-300" />
-
-          {/* Animated Drawing Line */}
-          <div
-            className="hidden md:block absolute left-1/2 top-0 w-[2px] bg-primary transition-all duration-300 ease-out"
-            style={{
-              height: `${lineProgress * 100}%`,
-            }}
-          />
-
-          {steps.map((step, index) => {
-            const isActive = index <= activeStep;
-
-            return (
-              <div
-                key={index}
-                data-index={index}
-                ref={(el) => (stepRefs.current[index] = el)}
-                className={`relative md:flex items-center mb-16 ${
-                  index % 2 === 0
-                    ? "md:justify-start"
-                    : "md:justify-end"
-                }`}
-              >
-
-                {/* CARD */}
-                <div
-                  className={`md:w-5/12 p-6 rounded-2xl shadow-sm transition-all duration-700 ${
-                    isActive
-                      ? "bg-white opacity-100 translate-y-0"
-                      : "bg-white opacity-0 translate-y-8"
-                  }`}
-                  style={{
-                    transitionDelay: `${index * 150}ms`,
-                  }}
-                >
-                  <h4 className="text-lg font-semibold mb-4">
-                    {step.title}
-                  </h4>
-
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {step.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span
-                          className={`w-2 h-2 mt-2 rounded-full transition ${
-                            isActive
-                              ? "bg-primary"
-                              : "bg-gray-300"
-                          }`}
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+          {plans.map((plan, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`
+                relative
+                rounded-2xl
+                p-8
+                border
+                backdrop-blur-xl
+                transition-all duration-300
+                ${
+                  plan.highlight
+                    ? "border-orange-500 bg-white/[0.08] scale-105 shadow-[0_0_40px_rgba(249,115,22,0.2)]"
+                    : "border-white/10 bg-white/[0.04] hover:border-orange-500/40"
+                }
+              `}
+            >
+              {/* Most Popular Badge */}
+              {plan.highlight && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-black text-xs px-4 py-1 rounded-full font-semibold">
+                  Most Popular
                 </div>
+              )}
 
-                {/* NUMBER CIRCLE */}
-                <div
-                  className={`hidden md:flex absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full items-center justify-center text-sm font-semibold transition-all duration-500 ${
-                    isActive
-                      ? "bg-primary text-white border-2 border-primary shadow-[0_0_15px_rgba(255,107,0,0.6)]"
-                      : "bg-white border-2 border-gray-300 text-gray-500"
-                  }`}
-                >
-                  {index + 1}
-                </div>
+              {/* Plan Name */}
+              <h3 className="text-xl font-semibold mb-4">
+                {plan.name}
+              </h3>
+
+              {/* Price */}
+              <div className="text-3xl font-bold mb-6">
+                {plan.price}
+                <span className="text-sm text-gray-400 font-medium">
+                  {" "} /month
+                </span>
               </div>
-            );
-          })}
+
+              {/* CTA */}
+              <button
+                onClick={() => navigate("/contact")}
+                className={`
+                  w-full mb-6 py-3 rounded-lg font-semibold transition
+                  ${
+                    plan.highlight
+                      ? "bg-orange-500 text-black hover:scale-105"
+                      : "bg-white/10 hover:bg-white/20"
+                  }
+                `}
+              >
+                Get Started →
+              </button>
+
+              {/* Features */}
+              <ul className="space-y-3 text-sm text-gray-400">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 mt-2 rounded-full bg-orange-400" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default ProcessSection;
+export default PricingSection;

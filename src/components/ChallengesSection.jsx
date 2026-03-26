@@ -1,99 +1,89 @@
-import { TrendingDown, DollarSign, BarChart, Users, Target, AlertCircle } from "lucide-react";
+import { Search, Settings, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
 
-const challenges = [
+const steps = [
   {
-    title: "Inconsistent Lead Flow",
+    title: "Audit & Strategy",
     description:
-      "Unpredictable marketing results that make revenue forecasting difficult.",
-    icon: TrendingDown,
+      "We analyze your current marketing, identify gaps, and build a clear growth roadmap tailored to your business.",
+    icon: Search,
   },
   {
-    title: "High Ad Spend, Low ROI",
+    title: "Build & Launch",
     description:
-      "Budget is spent without structured optimization or measurable returns.",
-    icon: DollarSign,
+      "We create high-converting campaigns, funnels, and creatives designed to generate consistent leads and sales.",
+    icon: Settings,
   },
   {
-    title: "Weak Conversion Funnels",
+    title: "Optimize & Scale",
     description:
-      "Traffic without strategy leads to lost opportunities and poor sales performance.",
-    icon: Target,
-  },
-  {
-    title: "Lack of Data Clarity",
-    description:
-      "Decisions are made on assumptions instead of actionable analytics.",
-    icon: BarChart,
-  },
-  {
-    title: "Poor Brand Positioning",
-    description:
-      "Unclear messaging makes it hard to stand out in competitive markets.",
-    icon: Users,
-  },
-  {
-    title: "Scaling Challenges",
-    description:
-      "Growth plateaus because systems are not built for long-term expansion.",
-    icon: AlertCircle,
+      "We continuously optimize performance using data to scale revenue predictably and profitably.",
+    icon: TrendingUp,
   },
 ];
 
-const ChallengesSection = () => {
+const HowItWorks = () => {
   return (
-    <section className="bg-[#F8F8F8] mb-10 mt-14 py-10">
-      <div className="container mx-auto px-6">
+    <section className="py-28 bg-[#0B0B0B] text-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-20">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <p className="text-primary uppercase tracking-widest text-sm mb-4">
-            The Market Reality
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            The Challenges Modern
-            <br className="hidden md:block" />
-            Businesses Face
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-6">
+            How We Work
           </h2>
 
-          <p className="text-gray-600 text-lg">
-            Growth today requires more than random campaigns. Without structure,
-            businesses struggle to scale predictably.
+          <p className="text-gray-400 text-lg">
+            A simple, proven 3-step system to turn your marketing into <br />a
+            predictable revenue engine.
           </p>
         </div>
 
-        {/* Grid */}
+        {/* Steps */}
         <div className="grid md:grid-cols-3 gap-8">
-          {challenges.map((item, index) => {
-            const Icon = item.icon;
+
+          {steps.map((step, index) => {
+            const Icon = step.icon;
 
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="
                   group
-                  bg-white
-                  rounded-3xl
+                  relative
+                  rounded-2xl
                   p-8
-                  shadow-sm
-                  transition-all
-                  duration-300
-                  hover:shadow-lg
-                  hover:-translate-y-2
+                  border border-white/10
+                  bg-gradient-to-br from-white/[0.06] to-white/[0.02]
+                  backdrop-blur-xl
+                  overflow-hidden
+                  transition-all duration-300
+                  hover:border-orange-500/40
                 "
               >
-                <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition">
-                  <Icon className="text-primary" size={28} />
+                {/* Step Number */}
+                <div className="absolute top-6 right-6 text-white/10 text-5xl font-bold">
+                  0{index + 1}
                 </div>
 
-                <h4 className="text-xl font-semibold mb-4">
-                  {item.title}
-                </h4>
+                {/* Glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-orange-500/10 to-transparent" />
 
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+                <div className="relative z-10">
+                  <Icon className="mb-6 text-orange-400" size={30} />
+
+                  <h3 className="text-xl font-semibold mb-4">
+                    {step.title}
+                  </h3>
+
+                  <p className="text-gray-400 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
             );
           })}
         </div>
@@ -103,4 +93,4 @@ const ChallengesSection = () => {
   );
 };
 
-export default ChallengesSection;
+export default HowItWorks;

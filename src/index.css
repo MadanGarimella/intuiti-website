@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0B0B0B;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -12,4 +18,12 @@ html {
 
 .stroke-text-white {
   -webkit-text-stroke: 2px #fff;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

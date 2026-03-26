@@ -1,91 +1,114 @@
-import { BarChart3, Target, Layers, ShieldCheck } from "lucide-react";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-const features = [
+const testimonials = [
   {
-    title: "Performance-Driven Strategy",
-    description:
-      "Every campaign is engineered with measurable KPIs and revenue-focused outcomes.",
-    icon: BarChart3,
+    name: "Rahul Sharma",
+    role: "E-commerce Founder",
+    content:
+      "We scaled from ₹3L to ₹12L/month in just 90 days. The structure and execution are on another level.",
   },
   {
-    title: "Full-Funnel Execution",
-    description:
-      "From awareness to conversion, we build scalable marketing systems that work together.",
-    icon: Target,
+    name: "Ananya Gupta",
+    role: "Beauty Brand Owner",
+    content:
+      "Finally found a team that understands performance marketing. Clear strategy, real results.",
   },
   {
-    title: "Scalable Growth Systems",
-    description:
-      "Our frameworks are designed to grow with your business — not limit it.",
-    icon: Layers,
+    name: "Karthik Reddy",
+    role: "Startup Founder",
+    content:
+      "Our ROAS improved by 3x within weeks. The system they built is predictable and scalable.",
   },
   {
-    title: "Transparent Reporting",
-    description:
-      "Clear dashboards, real metrics, and actionable insights — no vanity numbers.",
-    icon: ShieldCheck,
+    name: "Priya Mehta",
+    role: "D2C Brand",
+    content:
+      "From creatives to funnels, everything just works together. Best decision we made.",
   },
 ];
 
-const WhyChooseUs = () => {
+const Testimonials = () => {
+  const navigate = useNavigate();
+
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6 text-center">
+    <section className="py-28 bg-[#0B0B0B] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-20">
 
-        {/* Section Header */}
-        <p className="text-primary font-semibold mb-4">
-          Why Choose Intuiti Coporates
-        </p>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-6">
+            Loved by People Worldwide
+          </h2>
 
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          Built for brands that want
-          <br className="hidden md:block" />
-          predictable, scalable growth.
-        </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Real results from real businesses. Our systems are built to scale —
+            and our clients prove it.
+          </p>
+        </div>
 
-        <p className="text-gray-600 max-w-2xl mx-auto mb-16">
-          We combine performance marketing expertise with structured execution
-          to deliver consistent results across industries.
-        </p>
+        {/* Cards */}
+        <div
+          className="
+            flex md:grid md:grid-cols-3 gap-6
+            overflow-x-auto md:overflow-visible
+            pb-4 md:pb-0
+            no-scrollbar
+          "
+        >
+          {testimonials.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="
+                min-w-[300px] md:min-w-0
+                bg-gradient-to-br from-white/[0.06] to-white/[0.02]
+                border border-white/10
+                rounded-2xl
+                p-6
+                backdrop-blur-xl
+                relative
+                hover:border-orange-500/40
+                transition-all duration-300
+              "
+            >
+              {/* Stars */}
+              <div className="flex gap-1 mb-4 text-orange-400">
+                {"★★★★★".split("").map((star, i) => (
+                  <span key={i}>{star}</span>
+                ))}
+              </div>
 
-        {/* Feature Grid */}
-        <div className="grid md:grid-cols-4 gap-8">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
+              {/* Content */}
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                “{item.content}”
+              </p>
 
-            return (
-              <div
-                key={index}
-                className="group bg-[#F7F7F7] rounded-3xl p-8 transition-all duration-300 hover:bg-black hover:text-white hover:-translate-y-2"
-              >
-                <div className="flex justify-center mb-6">
-                  <Icon
-                    size={36}
-                    className="text-primary transition-colors duration-300 group-hover:text-primary"
-                  />
+              {/* User */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-semibold">
+                  {item.name[0]}
                 </div>
 
-                <h4 className="text-lg font-semibold mb-4">
-                  {feature.title}
-                </h4>
-
-                <p className="text-sm text-gray-600 group-hover:text-gray-300 transition-colors duration-300">
-                  {feature.description}
-                </p>
+                <div>
+                  <p className="text-sm font-semibold">{item.name}</p>
+                  <p className="text-xs text-gray-400">{item.role}</p>
+                </div>
               </div>
-            );
-          })}
+            </motion.div>
+          ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-20">
-          <Link
-            to="/contact"
-            className="inline-block bg-primary text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition"
+        <div className="mt-20 text-center">
+          <button
+            onClick={() => navigate("/contact")}
+            className="bg-orange-500 text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition"
           >
-            Book Your Free Strategy Call →
-          </Link>
+            Work With Us →
+          </button>
         </div>
 
       </div>
@@ -93,4 +116,4 @@ const WhyChooseUs = () => {
   );
 };
 
-export default WhyChooseUs;
+export default Testimonials;
