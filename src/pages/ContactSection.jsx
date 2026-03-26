@@ -108,7 +108,7 @@ const ContactSection = () => {
               <div>
                 <p>Email Us</p>
                 <p className="text-gray-400 text-sm">
-                  contact@intuiticorporates.com
+                  intuiticorporates@gmail.com
                 </p>
               </div>
             </div>
