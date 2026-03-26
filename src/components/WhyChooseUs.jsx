@@ -3,28 +3,28 @@ import { useNavigate } from "react-router-dom";
 
 const testimonials = [
   {
-    name: "Rahul Sharma",
-    role: "E-commerce Founder",
+    name: "Praveen",
+    role: "Epicure - The Cafe Bites",
     content:
-      "We scaled from ₹3L to ₹12L/month in just 90 days. The structure and execution are on another level.",
+      "Outstanding work! Perfectly captured the essence of the F&B brand and brought in the right audience with impactful marketing.",
   },
   {
-    name: "Ananya Gupta",
-    role: "Beauty Brand Owner",
+    name: "Santosh",
+    role: "Smaakenzzo",
     content:
       "Finally found a team that understands performance marketing. Clear strategy, real results.",
   },
   {
-    name: "Karthik Reddy",
-    role: "Startup Founder",
+    name: "Sathya Reddy",
+    role: "Haraa Gold, Diamonds & Silver",
     content:
       "Our ROAS improved by 3x within weeks. The system they built is predictable and scalable.",
   },
   {
-    name: "Priya Mehta",
-    role: "D2C Brand",
+    name: "Devendar",
+    role: "CoZone - Creative Spaces",
     content:
-      "From creatives to funnels, everything just works together. Best decision we made.",
+      "Loved the creativity and results real engagement and footfall driven through smart strategy.",
   },
 ];
 
