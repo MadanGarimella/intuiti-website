@@ -102,7 +102,7 @@ const Portfolio = () => {
             </div>
 
             <div className="md:w-1/2">
-              <h3 className="text-3xl font-bold mb-4">
+              <h3 className="text-3xl font-bold">
                 Epicure – The Cafe Bites
               </h3>
 
@@ -152,7 +152,7 @@ const Portfolio = () => {
             </div>
 
             <div className="md:w-1/2">
-              <h3 className="text-3xl font-bold mb-4 text-[#f181c7] font-serif">
+              <h3 className="text-3xl font-bold text-[#f181c7] font-serif">
                 Smaakenzzo
               </h3>
 
@@ -237,6 +237,67 @@ const Portfolio = () => {
                 <div>
                   <p className="text-3xl font-bold">
                     <AnimatedNumber value={240} suffix="K+" />
+                  </p>
+                  <span className="text-gray-400 text-sm">Reach</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* ================= REALESTATE SECTION ================= */}
+      <section className="relative py-40 px-6 md:px-20 bg-white text-black overflow-hidden">
+
+        <h2 className="absolute top-10 left-0 text-[140px] md:text-[220px] font-extrabold text-black stroke-text-white opacity-10 pointer-events-none">
+          Real Estate
+        </h2>
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="group flex flex-col md:flex-row gap-16 items-center"
+          >
+            <div className="md:w-1/2 flex justify-center">
+              <div className="relative p-10 transition-all duration-500">
+                <img
+                  src="/cozone.png"
+                  alt="Haraa"
+                  className="w-full max-w-[320px] object-contain transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+            </div>
+
+            <div className="md:w-1/2">
+              <h3 className="text-3xl font-bold mb-4 text-[#0077ff] font-serif">
+                CoZone - Creative Spaces
+              </h3>
+
+              <p className="text-black mb-10">
+                Luxury-focused campaigns targeting high-value buyers with precision funnels.
+              </p>
+
+              <div className="flex gap-12">
+                <div>
+                  <p className="text-3xl font-bold">
+                    <AnimatedNumber value={2} suffix="x" />
+                  </p>
+                  <span className="text-gray-400 text-sm">ROAS</span>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold">
+                    <AnimatedNumber value={2} suffix="0+" />
+                  </p>
+                  <span className="text-gray-400 text-sm">Leads</span>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold">
+                    <AnimatedNumber value={200} suffix="K+" />
                   </p>
                   <span className="text-gray-400 text-sm">Reach</span>
                 </div>
