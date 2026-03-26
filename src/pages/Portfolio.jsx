@@ -47,7 +47,7 @@ const Portfolio = () => {
       {/* ================= HERO ================= */}
       <section className="relative min-h-screen flex items-center px-6 md:px-20 bg-black text-white overflow-hidden">
 
-        <h2 className="absolute top-20 left-0 text-[120px] md:text-[220px] font-extrabold text-transparent stroke-text-white opacity-10 pointer-events-none">
+        <h2 className="absolute top-20 left-0 text-[120px] md:text-[220px] font-extrabold text-white stroke-text-black opacity-10 pointer-events-none">
           PORTFOLIO
         </h2>
 
@@ -76,7 +76,7 @@ const Portfolio = () => {
       {/* ================= F&B SECTION ================= */}
       <section className="relative py-40 px-6 md:px-20 bg-[#f8f8f8] overflow-hidden">
 
-        <h2 className="absolute top-10 left-0 text-[140px] md:text-[220px] font-extrabold text-transparent stroke-text opacity-5 pointer-events-none">
+        <h2 className="absolute top-10 left-0 text-[140px] md:text-[220px] font-extrabold text-transparent stroke-text opacity-10 pointer-events-none">
           F&B
         </h2>
 
@@ -189,8 +189,8 @@ const Portfolio = () => {
       {/* ================= JEWELRY SECTION ================= */}
       <section className="relative py-40 px-6 md:px-20 bg-black text-white overflow-hidden">
 
-        <h2 className="absolute top-10 left-0 text-[140px] md:text-[220px] font-extrabold text-transparent stroke-text-white opacity-10 pointer-events-none">
-          JEWELRY
+        <h2 className="absolute top-10 left-0 text-[120px] md:text-[190px] font-extrabold text-transparent stroke-text-white opacity-15 pointer-events-none">
+          JEWELLERY
         </h2>
 
         <div className="relative z-10 max-w-7xl mx-auto">
